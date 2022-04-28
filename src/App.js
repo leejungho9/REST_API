@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./component/Header";
+import DayList from "./component/DayList";
+import Day from "./component/Day";
+import createWord from "./component/createWord";
 
-function App() {
+import { Route, Switch } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route exact path="/" component={DayList} />
+          <Route path="/day/:day" component={Day} />
+          <Route path="/create_word" component={createWord} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
-}
-
+};
 export default App;
